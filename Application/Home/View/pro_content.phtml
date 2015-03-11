@@ -1,0 +1,121 @@
+<div id="right">
+    <div>
+        <div class="ware_info" style="border: 0px solid rgb(0, 204, 0); position: relative;"
+             ectype="jqzoom_relative">
+            <div class="ware_pic">
+                <div class="big_pic">
+                    <a href="javascript:;">
+                        <span class="jqzoom">
+                            <img src="/Public/upload/pro_img/{$product.main_image}" width="360" height="360" style="border-radius:4px;"
+                                jqimg="/Public/upload/pro_img/{$product.main_image}" alt="">
+                        </span>
+                    </a>
+                </div>
+                <div class="bottom_btn">
+                    <!--<a class="collect" href="javascript:collect_goods(1887);" title="收藏该商品"></a>-->
+                    <div class="left_btn"></div>
+                    <div class="right_btn"></div>
+                    <div class="ware_box">
+                        <ul id="goodsPicList">
+                            <li class="ware_pic_hover"
+                                bigimg="data/files/store_54565/goods_158/201501061019188371.jpg"><img
+                                    src="data/files/store_54565/goods_158/small_201501061019188371.jpg" width="55"
+                                    height="55"></li>
+                            <li bigimg="data/files/store_54565/goods_157/201501061019178985.jpg"><img
+                                    src="data/files/store_54565/goods_157/small_201501061019178985.jpg" width="55"
+                                    height="55"></li>
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                    $(function () {
+                        var btn_list_li = $("#btn_list > li");
+                        btn_list_li.hover(function () {
+                            $(this).find("ul:not(:animated)").slideDown("fast");
+                        }, function () {
+                            $(this).find("ul").slideUp("fast");
+                        });
+                    });
+                </script>
+            </div>
+
+            <div class="ware_text">
+                <h1 class="ware_title">{$product.title}</h1>
+
+                <div class="blank_area10"></div>
+                <div class="rate">
+                    <div class="one_line_desc_highline">
+                        餐谋长价：&nbsp;
+                    <span class="fontColor3" ectype="goods_price">¥{$product.sell_price}</span>
+                    <span><font color="#666" style="font-size:12px;">/{$product.pro_size}</font></span>
+                    </div>
+                    <div class="one_line_desc">
+                        品牌<span style="color:#FFF">名称</span>：&nbsp;优倍范
+                    </div>
+                </div>
+                <div class="handle">
+                    <ul>
+                        <li class="handle_title">购买数量：</li>
+                        <li class="amount_area" style="padding:0px 5px 0 5px;">
+                            <a href="javascript:void(0);" hidefocus="" class="amount_reduce reduce_radius"></a>
+                            <input type="text" class="amount_input" name="" id="quantity" value="1">
+                            <a href="javascript:void(0);" hidefocus="" class="amount_increase increase_radius"></a>
+
+                            <div class="clear"></div>
+                        </li>
+                        <li style="padding-top: 5px;">
+                            件（库存<span class="stock" ectype="goods_stock">977</span>件）
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="ware_btn">
+                    <div class="ware_cen" style="display:none;border:#c0c0c0 1px solid;">
+                        <div class="ware_center" style="border:#F00 0px solid;">
+                            <h1 style="border-bottom:#ccc 1px solid;">
+                                <span class="dialog_title">商品已成功添加到购物车</span>
+                                    <span class="close_link" title="关闭" onmouseover="this.className = 'close_hover'"
+                                          onmouseout="this.className = 'close_link'" onclick="slideUp_fn();"></span>
+                            </h1>
+
+                            <div class="ware_cen_btn">
+                                <p class="ware_text_p">购物车内共有 <span class="bold_num">3</span> 种商品 共计 <span
+                                        class="bold_mly">658.00</span></p>
+
+                                <p class="ware_text_btn">
+                                    <input type="submit" class="btn1" name="" value="查看购物车"
+                                           onclick="location.href='http://www.ubive.com/index.php?app=cart'">
+                                    <input type="submit" class="btn2" name="" value="继续挑选商品"
+                                           onclick="$('.ware_cen').css({'display':'none'});">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="ware_cen_bottom"></div>
+                    </div>
+
+                    <!--<li class="btn_c1" title="立刻购买"><a href="#"></a></li>-->
+                    <div>
+                        <a class="btn_c2" href="javascript:buy();" id="goodsDetailAddCartBtn">加入购物车</a>
+                        <a class="btn_c3" href="javascript:buy_to_cart();">立即购买</a>
+
+                        <div class="clear"></div>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="blank_area10"></div>
+    <a name="module"></a>
+    <ul class="user_menu" style="border:#000 0px solid;">
+        <div class="ornament1"></div>
+        <div class="ornament2"></div>
+        <li><a class="active" href="index.php?app=goods&amp;id=1887#module"><span>商品详情</span></a></li>
+    </ul>
+    <div class="blank_area10"></div>
+    <div class="option_box">
+        <div class="default">{$product.body}</div>
+    </div>
+    <div class="clear"></div>
+</div>

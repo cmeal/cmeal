@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>管理员后台</title>
+    <include file="./Application/Canmou/View/before_body.phtml"/>
+    <link rel="stylesheet" href="__PUBLIC__css/webuploader.css"/>
+    <link rel="stylesheet" href="__PUBLIC__css/uploaderstyle.css"/>
+    <link rel="stylesheet" href="__PUBLIC__css/dropzone.css"/>
+</head>
+<body class="no-skin">
+
+<include file="./Application/Canmou/View/navbar.phtml"/>
+<div class="main-container" id="main-container">
+    <include file="./Application/Canmou/View/sidebar.phtml"/>
+    <!--begin-->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="page-content-area">
+                <div class="page-header">
+                    <b><h1>
+                            <if condition="isset($product)">
+                                编辑商品
+                                <else/>添加商品
+                            </if></h1></b>
+                </div>
+                <include file="./Application/Canmou/View/tip.phtml"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal row-border" id="validate"  method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="files" id="files" value="">
+                            <input type="hidden" name="cover" id="cover" value="{$product.main_image}">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品标题</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="form-field-1" class="col-xs-10 col-sm-6" name="title" value="{$product.title}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">商品类别
+                                </label>
+                                <div class="col-sm-3">
+                                    <select name="cid" class="form-control" id="form-field-select-1" >
+                                        <if condition="$product.cid neq '0' AND $product.cid neq null">
+                                            <option value="{$product.cid}">{$product.cate_name}</option>
+                                            <else/>
+                                            <option value="">请选择</option>
+                                        </if>
+
+                                        <volist name="cates" id="cate">
+                                            <option value="{$cate.cid}">{$cate.name}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">店主
+                                </label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="form-field-select-1" name="shop_id">
+                                        <if condition="$product.shop_id neq '0' AND $product.shop_id neq null">
+                                            <option value="{$product.shop_id}">{$product.shop_name}</option>
+                                            <else/>
+                                            <option value="">请选择</option>
+                                        </if>
+                                        <volist name="shops" id="shop">
+                                            <option value="{$shop.sid}">{$shop.name}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">成本价格
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="form-field-1" class="col-xs-10 col-sm-6" name="cost" value="{$product.cost}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">销售价格
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="form-field-1" class="col-xs-10 col-sm-6" name="sell_price" value="{$product.sell_price}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">销售单位
+                                </label>
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="form-field-select-1" name="pro_size">
+                                        <if condition="$product.pro_size neq '0' AND $product.pro_size neq null">
+                                            <option value="{$product.pro_size}">{$product.pro_size}</option>
+                                            <else/>
+                                            <option value="">请选择</option>
+                                        </if>
+                                        <foreach name="size" item="s">
+                                            <option value="{$s}">{$s}</option>
+                                        </foreach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">会员价格
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="form-field-1" class="col-xs-10 col-sm-6" name="vip_price" value="{$product.vip_price}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">详情
+                                </label>
+                                <div class="col-sm-10">
+                                    <link rel="stylesheet" type="text/css" href="__PUBLIC__js/umeditor/themes/default/css/umeditor.min.css"/>
+                                    <!-- 加载编辑器的容器 -->
+                                    <!-- 从数据库中取出文章内容打印到此处 -->
+                                    <script id="myEditor" name="body" type="text/plain" style="height:300px;width:700px">{$product.body}</script>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">
+                                    商品图片：
+                                </label>
+                                <div class="col-md-8">
+                                    <div class="dropzone"></div>
+                                    <p class="help-block">
+                                        仅限上传图片
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right control-label">状态</label>
+                                <div class="radio">
+                                    <if condition="$product.status eq '0'">
+                                        <label>
+                                            <input type="radio" name="status" class="ace"  value="1"/>
+                                            <span class="lbl">启用</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" checked="checked" class="ace" value="0"/>
+                                            <span class="lbl">禁用</span>
+                                        </label>
+                                        <else/>
+                                        <label>
+                                            <input type="radio" name="status" class="ace" checked="checked" value="1"/>
+                                            <span class="lbl">启用</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" class="ace"  value="0"/>
+                                            <span class="lbl">禁用</span>
+                                        </label>
+                                    </if>
+                                </div>
+                            </div>
+                            <div class="form-group form-actions">
+                                <label class="col-md-3 control-label hidden-xs"></label>
+                                <div class="col-md-9">
+                                    <input type="submit" value="保存" class="btn btn-primary submit-all">
+                                    <a href="" class="btn">返回商品列表</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--end-->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+						<span class="bigger-120">
+							Application &copy; 2013-2014
+						</span>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="./Application/Canmou/View/after_body.phtml"/>
+
+<script src="__PUBLIC__js/dropzone/dropzone.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var b=JSON.stringify({$product.files|json_encode});
+//        console.log({$product.files|json_encode});
+//        console.log(b);
+        $('#files').val(b);
+
+        var dDropzone = $('.dropzone');
+        if (dDropzone.length) {
+            var coverFile='{$product.main_image}';
+            try {
+                dDropzone.dropzone({
+                    paramName: "files",
+                    url: "/canmou/product/fileupload",
+                    autoProcessQueue: false,
+                    uploadMultiple: true,
+                    parallelUploads: 10,
+                    maxFilesize: 2,
+                    // maxFiles: 10,
+                    addRemoveLinks : true,
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF",
+                    dictResponseError: '上传文件发生错误',
+                    dictRemoveFile: '删除',
+                    dictMaxFilesExceeded: '上传失败，超过上传限制',
+                    init: function() {
+                        var myDropzone = this;
+                        myDropzone.on('addedfile', function(file) {
+                            var btnSetCover = $('<a class="dz-cover">设为首图</a>');
+                            if(file.name==coverFile){
+                                btnSetCover.addClass('selected');
+                            }
+                            btnSetCover.click(function(e) {
+                                dDropzone.find('> div.dz-preview > a.dz-cover.selected').removeClass('selected');
+                                $(this).addClass('selected');
+                                coverFile = file.name;
+                            });
+                            $(file.previewElement).append(btnSetCover);
+                        });
+                        myDropzone.on('successmultiple', function(files, response) {
+
+                            //console.log(response);//response is json type
+                            var file = $.parseJSON(response);//php encode a array,this is object or is a array
+                            var oldfile = $.parseJSON($('#files').val());
+                            if(oldfile==null){
+                                oldfile=new Array();
+                            }
+                            //console.log(file);
+                            for(i in file){
+                                if(file[i]){
+                                    oldfile.push(file[i]);
+                                }
+                                if(i==coverFile){
+                                    $('#cover').val(file[i]);//find the main img
+                                }
+                            }
+                            //encode method,encode a array//php decode method.after is a array
+                            $('#files').val(JSON.stringify(oldfile));
+                            $('#validate').submit();
+                        });
+                        myDropzone.on('removedfile', function(file) {
+//                            var files = $.parseJSON($('#files').val()), newfiles = [], i;
+                            var files = $.parseJSON($('#files').val()),newfiles = [],i;
+                            console.log(files);
+                            for (i in files) {
+                                if(files[i]!=file.name){
+                                    newfiles.push(files[i]);
+                                }
+                            }
+                            var a = JSON.stringify(newfiles);
+                            $('#files').val(JSON.stringify(newfiles));
+                        });
+                        <foreach name="product[files]" item="pro">
+                            var fname="{$pro}";
+                            var mockFile = {name:fname,size:"1024"};
+                            myDropzone.emit("addedfile", mockFile);
+                            myDropzone.emit("thumbnail", mockFile, "/Public/upload/pro_img/{$pro}" );
+                        </foreach>
+                        $(".submit-all").click(function(e){
+                            e.preventDefault();
+//                                    var result = $('#validate').valid();
+                            if (myDropzone.getQueuedFiles().length) {
+                                myDropzone.processQueue();
+                            } else {
+//                                $('#cover').val(coverFile);
+                                $('#validate').submit();
+                            }
+                        });
+                    }
+                });
+            } catch(e) {
+                alert('批量上传图片不支持老版本浏览器，请更换浏览器重试');
+            }
+        };
+    });
+</script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__js/umeditor/umeditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__js/umeditor/umeditor.min.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var um = UM.getEditor('myEditor');
+</script>
+</body>
+</html>

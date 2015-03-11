@@ -1,0 +1,52 @@
+<include file="./Application/Home/View/header.phtml"/>
+    <link href="__PUBLIC__css/header.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__css/base.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__css/footer.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__css/catalog.css" type="text/css" rel="stylesheet">
+    <link href="__PUBLIC__css/ubmall.css" type="text/css" rel="stylesheet">
+
+    <script src="__PUBLIC__js/jquery.js" type="text/javascript"></script>
+    <script src="__PUBLIC__js/ubmall.js" type="text/javascript"></script>
+    <script src="__PUBLIC__js/nav.js" type="text/javascript"></script>
+    <script src="__PUBLIC__js/select.js" type="text/javascript"></script>
+    <script src="__PUBLIC__js/footer.js" type="text/javascript"></script>
+    <script src="__PUBLIC__js/headtop.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div style="width:100%;min-width:1150px;" align="center">
+    <div style="display:none" id="flagindex">1</div>
+    <!--topbar-->
+    <include file="./Application/Home/View/topbar.phtml"/>
+    <!--/topbar-->
+    <div style="position:relative;z-index:100;width:1150px;" align="left">
+        <div style="width:100%;height:35px;"></div>
+        <!--big ad-->
+        <!--/big ad-->
+
+        <!--head-->
+        <include file="./Application/Home/View/head.phtml"/>
+        <!--/head-->
+
+        <!--navbar-->
+        <include file="./Application/Home/View/navbar.phtml"/>
+        <!--/navbar-->
+
+        <!--ads   class content_v1 index_top_area-->
+        <include file="./Application/Home/View/ads.phtml"/>
+        <!--/ads-->
+        <div class="clear"></div>
+        <!--pro list class content_v1-->
+        <include file="./Application/Home/View/index_content.phtml"/>
+        <!--/pro list-->
+    </div>
+
+    <div class="footer_margin" style="background-color:#fff;"></div>
+    <div class="footer_margin" style="background-color:#fff;"></div>
+    <!--footer-->
+    <include file="./Application/Home/View/footer.phtml"/>
+    <!--/footer-->
+</div>
+</div>
+</body>
+</html>

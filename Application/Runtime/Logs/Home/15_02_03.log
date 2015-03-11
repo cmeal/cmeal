@@ -1,0 +1,36 @@
+[ 2015-02-03T21:53:10+08:00 ] 127.0.0.1 /admin/product/index
+ERR: 无法加载控制器:Admin
+
+[ 2015-02-03T21:53:27+08:00 ] 127.0.0.1 /admin/product/index
+ERR: 无法加载控制器:Admin
+
+[ 2015-02-03T22:15:09+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:16:40+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:16:42+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:17:09+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:17:33+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:19:48+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:20:53+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:21:07+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:21:08+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+
+[ 2015-02-03T22:21:14+08:00 ] 127.0.0.1 /
+ERR: 模板不存在:./Application/Home/View/Index_indexCategory_index.phtml
+

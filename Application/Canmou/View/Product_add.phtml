@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>管理员后台</title>
+
+    <include file="./Application/Canmou/View/before_body.phtml"/>
+
+</head>
+<body class="no-skin">
+
+<include file="./Application/Canmou/View/navbar.phtml"/>
+<div class="main-container" id="main-container">
+    <include file="./Application/Canmou/View/sidebar.phtml"/>
+    <!--begin-->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="page-content-area">
+                <div class="page-header">
+                    <b><h1>
+                            <if condition="$pro_type eq 'add'">
+                                添加商品
+                                <else/>
+                                编辑商品
+                            </if>
+                        </h1></b>
+                </div>
+                <include file="./Application/Canmou/View/tip.phtml"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form" method="POST">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1">商品标题</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="form-field-1" class="col-xs-10 col-sm-6" name="title" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">类别
+                                </label>
+                                <div class="col-sm-4">
+                                    <select name="shop" class="form-control" id="form-field-select-1" >
+                                        <option value="公斤">公斤</option>
+                                        <option value="盒">盒</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">店主
+                                </label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" id="form-field-select-1" >
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">原始价格
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="form-field-1" class="col-xs-10 col-sm-6" name="repassword" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">销售价格
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="form-field-1" class="col-xs-10 col-sm-6" name="repassword" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">会员价格
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="number" id="form-field-1" class="col-xs-10 col-sm-6" name="repassword" value=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-left" for="form-field-1">详情
+                                </label>
+                                <div class="col-sm-8">
+                                    <div id="myEditor">
+                                        <link rel="stylesheet" type="text/css" href="__PUBLIC__js/umeditor/themes/default/css/umeditor.min.css"/>
+                                        <!-- 加载编辑器的容器 -->
+                                        <!-- 从数据库中取出文章内容打印到此处 -->
+                                        <script id="myEditor" name="body" type="text/plain" style="height:300px;"></script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 no-padding-right control-label">状态</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="status" class="ace" checked="checked" value="1"/>
+                                        <span class="lbl">启用</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="status" class="ace" value="0"/>
+                                        <span class="lbl">禁用</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="submit">提交</button> &nbsp; &nbsp; &nbsp;
+                                    <a href="/canmou/product/index">
+                                        <button class="btn" type="button">返回</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--end-->
+    <div class="footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+						<span class="bigger-120">
+							Application &copy; 2013-2014
+						</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="./Application/Canmou/View/after_body.phtml"/>
+<!-- 配置文件 -->
+<script type="text/javascript" src="__PUBLIC__js/umeditor/umeditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="__PUBLIC__js/umeditor/umeditor.min.js"></script>
+<!-- 实例化编辑器 -->
+<script type="text/javascript">
+    var um = UM.getEditor('myEditor');
+</script>
+
+</body>
+</html>
